@@ -11,15 +11,15 @@ Java based implementation of Regular Expression transformation in Qlik Sense. Th
 
  ## Building
  
-This application was built using the Gradle Build Tool. To build the application you will need to have a working gradle installation in your environment. Go to  [gradle](https://gradle.org/) to learn more about running the Gradle build tool.
+This application was built using the Gradle Build Tool. To build the application you will need to have a working gradle installation in your environment. Go to [gradle](https://gradle.org/) to learn more about running the Gradle build tool.
 
 ## Running
 
 Download the zip-file from the release section. This is a self-contained environment that has all the needed components and only needs a Java Runtime. Unzip the file in a directory and start with
-- **Windows**: bin\aai-regexp-server.bat
-- **Linux**: bin/aai-regexp-server
+- **Windows**: `bin\aai-regexp-server.bat`
+- **Linux**: `bin/aai-regexp-server`
 
 ## TODO
 
-[ ] Javadoc documentation
-[ ] Separate framework from implementation  
+- [ ] Javadoc documentation
+- [ ] Separate framework from implementation  
