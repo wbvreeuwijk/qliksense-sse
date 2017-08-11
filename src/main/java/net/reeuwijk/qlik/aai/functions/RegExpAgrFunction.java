@@ -11,12 +11,12 @@ import net.reeuwijk.qlik.aai.Row;
 import net.reeuwijk.qlik.aai.BundledRows.Builder;
 import net.reeuwijk.qlik.aai.util.SSEFunction;
 
-public class RegExpStrFunction implements SSEFunction
+public class RegExpAgrFunction implements SSEFunction
 {
 	
 	private StringBuffer str = new StringBuffer();
 	
-	private static final String FUNCTION_NAME = "RegExpStr";
+	private static final String FUNCTION_NAME = "RegExpAgr";
 
 	public static String getParameters() {
 		return "Pattern:String,Replacement:String,Text:String";
