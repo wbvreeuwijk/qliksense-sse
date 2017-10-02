@@ -1,8 +1,5 @@
 package net.reeuwijk.qlik.aai.util;
 
-import java.net.reeuwijk.qlik.aai.CommonRequestHeader;
-import java.net.reeuwijk.qlik.aai.FunctionRequestHeader;
-import java.net.reeuwijk.qlik.aai.ScriptRequestHeader;
 import java.util.logging.Logger;
 
 import com.google.protobuf.InvalidProtocolBufferException;
@@ -13,7 +10,10 @@ import io.grpc.Metadata;
 import io.grpc.ServerCall;
 import io.grpc.ServerCallHandler;
 import io.grpc.ServerInterceptor;
+import net.reeuwijk.qlik.aai.CommonRequestHeader;
+import net.reeuwijk.qlik.aai.FunctionRequestHeader;
 import net.reeuwijk.qlik.aai.RegexpServer;
+import net.reeuwijk.qlik.aai.ScriptRequestHeader;
 
 public class SSEHeaderInterceptor implements ServerInterceptor {
 

@@ -88,58 +88,16 @@ public class SSEServer extends ConnectorGrpc.ConnectorImplBase {
 		responseObserver.onCompleted();
 	}
 
-	public io.grpc.stub.StreamObserver<net.reeuwijk.qlik.aai.BundledRows> evaluateScript(
-			io.grpc.stub.StreamObserver<net.reeuwijk.qlik.aai.BundledRows> responseObserver) {
-		logger.info("Received executeFunction");
-
-		int functionId = Constant.FUNCTION_HEADER.get().getFunctionId();
-
-		Class<SSEFunction> cls = sseFunctions.get(functionId);
-		SSEFunction sseFunction;
-		try {
-			sseFunction = cls.newInstance();
-			StreamObserver<BundledRows> response = new StreamObserver<BundledRows>() {
-				@Override
-				public void onNext(BundledRows value) {
-					List<Row> inputRows = value.getRowsList();
-					for (Row inRow : inputRows) {
-						sseFunction.executeRow(inRow);
-					}
-					responseObserver.onNext(sseFunction.getReturnRows());
-				}
-
-				@Override
-				public void onError(Throwable t) {
-					logger.log(Level.WARNING, "Encountered Error somewhere", t);
-				}
-
-				@Override
-				public void onCompleted() {
-					responseObserver.onCompleted();
-				}
-			};
-			return response;
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return responseObserver;
-	}
-
 	public io.grpc.stub.StreamObserver<net.reeuwijk.qlik.aai.BundledRows> executeFunction(
 			io.grpc.stub.StreamObserver<net.reeuwijk.qlik.aai.BundledRows> responseObserver) {
 
-		logger.info("Received executeFunction");
-
 		int functionId = Constant.FUNCTION_HEADER.get().getFunctionId();
 
 		Class<SSEFunction> cls = sseFunctions.get(functionId);
 		SSEFunction sseFunction;
 		try {
 			sseFunction = cls.newInstance();
+			logger.info("Executing function: "+sseFunction.getClass().getName());
 			StreamObserver<BundledRows> response = new StreamObserver<BundledRows>() {
 				@Override
 				public void onNext(BundledRows value) {
